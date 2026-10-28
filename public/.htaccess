@@ -1,0 +1,40 @@
+# Lectura - public root .htaccess
+# Clean error pages, HTTPS forcing when available, asset caching
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS when behind a proxy that reports https
+    # (comment out if HTTPS is handled at the server level and causes loops)
+    # RewriteCond %{HTTPS} !=on
+    # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Friendly error pages
+    ErrorDocument 403 /error.php?code=403
+    ErrorDocument 404 /error.php?code=404
+    ErrorDocument 500 /error.php?code=500
+</IfModule>
+
+# Basic security headers (PHP also sets these; these are a safety net for static assets)
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Cache static assets
+    <FilesMatch "\.(css|js|svg|png|jpg|jpeg|webp|woff2?|ttf|ico)$">
+        Header set Cache-Control "public, max-age=2592000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Block access to hidden files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Default charset
+AddDefaultCharset UTF-8

@@ -1,0 +1,31 @@
+# Local configuration and secrets
+/config/config.php
+/config/alwaysdata.php
+.env
+.env.*
+
+# Backups and temporary files
+/storage/backups/
+update.txt
+
+# Composer dependencies (run `composer install` after cloning)
+/vendor/
+
+# Uploaded course files (keep the folder, never commit student material)
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+!/storage/uploads/.htaccess
+
+# Logs
+/storage/logs/*
+!/storage/logs/.gitkeep
+!/storage/logs/.htaccess
+
+# Local tooling / OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+node_modules/
+composer.phar

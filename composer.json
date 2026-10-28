@@ -1,0 +1,20 @@
+{
+    "name": "lectura/lectura",
+    "description": "Lectura - private course-material hub for a university cohort",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-fileinfo": "*",
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "suggest": {
+        "ext-intl": "Improved locale-aware date formatting; Lectura falls back to translated month names when intl is unavailable."
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
